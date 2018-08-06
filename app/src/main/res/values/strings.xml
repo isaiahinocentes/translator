@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Translator</string>
+    <string name="input_hint">TYPE TEXT HERE</string>
+    <string name="translate">Translate</string>
+    <string name="menu">Menu</string>
+    <string name="app_title">HERMES TRANSLATOR</string>
+    <string-array name="spinner_source_languages">
+        <item>English</item>
+        <item>Japanese</item>
+        <item>Tagalog</item>
+    </string-array>
+    <string-array name="spinner_direction_languages">
+        <item>English</item>
+        <item>Japanese</item>
+        <item>Tagalog</item>
+    </string-array>
 </resources>
