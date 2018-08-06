@@ -10,7 +10,6 @@
         android:id="@+id/imgBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="Background Image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -65,9 +64,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
         android:entries="@array/spinner_source_languages"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@+id/imgMicSource"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMenu"
+        tools:ignore="SmallSp" />
 
     <ImageView
         android:id="@+id/imgMicSource"
