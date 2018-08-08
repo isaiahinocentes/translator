@@ -12,9 +12,31 @@ import com.android.volley.toolbox.Volley;
 
 public class API {
 
-    RequestQueue queue;
+    /* Request Format
+    https://translate.yandex.net/api/v1.5/tr/translate?
+    key=<API key>
+    &text=<text to translate>
+    &lang=<translation direction>
+    &[format=<text format>]
+    &[options=<translation options>]
+    */
 
-    boolean request_translation(String url, String key, String text, String lang, final Context ctx){
+    //With added suffixes (? for url | & for API key)
+        public static final String API_BASE_URL = "https://translate.yandex.net/api/v1.5/tr/translate?";
+        public static final String API_KEY = "key=trnsl.1.1.20180806T180600Z.5d41060ee1dee3cd.460818f1319dce121769272399a405d23ba9c4d5&";
+    //From request
+        public static String TEXT;
+        public static String LANG; //ends with "" | "&" if using next options
+    //Nullable
+        public static String FORMAT;
+        public static String OPTIONS;
+    //FINAL API REQUEST LINK
+        public static String API_REQUEST;
+
+
+    private RequestQueue queue;
+
+    void request_translation(String url, String key, String text, String lang, final Context ctx){
         queue = Volley.newRequestQueue(ctx);
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -32,8 +54,5 @@ public class API {
             }
         );
         queue.add(stringRequest);
-
-
-        return false;
     }
 }
