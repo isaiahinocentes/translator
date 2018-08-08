@@ -1,5 +1,9 @@
 package com.translator.translator.api;
 
+import android.content.Context;
+
+import com.translator.translator.TextTranslation;
+
 public class Functions {
 
     public static String Text;
@@ -80,4 +84,5 @@ public class Functions {
         //return en-ja
         return lang;
     }
+
 }
