@@ -41,6 +41,7 @@
         android:layout_height="39dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
+        android:onClick="gotoSpeechTranslation"
         android:text="@string/menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />

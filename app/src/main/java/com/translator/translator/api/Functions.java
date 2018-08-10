@@ -92,8 +92,8 @@ public class Functions {
     public static String convertLocale(String lang_dir) throws Exception{
         switch (lang_dir){
             case "English": return "en_PH";
-            case "Japanese": return "ja_";
-            case "Tagalog": return "fil_";
+            case "Japanese": return "ja_JP";
+            case "Tagalog": return "fil_PH";
             default:
                 throw new Exception("Invalid target language.");
         }

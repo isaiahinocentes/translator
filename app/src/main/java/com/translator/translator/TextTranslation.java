@@ -1,6 +1,7 @@
 package com.translator.translator;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -71,6 +72,10 @@ public class TextTranslation extends AppCompatActivity {
         alert.show();
     }
 
+    public void gotoSpeechTranslation(View v){
+        Intent intent = new Intent(TextTranslation.this, SpeechTranslation.class);
+        startActivity(intent);
+    }
 
 
 }
