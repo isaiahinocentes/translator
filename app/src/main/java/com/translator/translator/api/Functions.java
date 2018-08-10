@@ -85,4 +85,18 @@ public class Functions {
         return lang;
     }
 
+    /**
+     * This will format the lang_dir to locale keyword
+     * for speech function
+     */
+    public static String convertLocale(String lang_dir) throws Exception{
+        switch (lang_dir){
+            case "English": return "en_PH";
+            case "Japanese": return "ja_";
+            case "Tagalog": return "fil_";
+            default:
+                throw new Exception("Invalid target language.");
+        }
+    }
+
 }
