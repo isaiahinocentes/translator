@@ -5,4 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="HermesBlue">#1b4b87</color>
     <color name="HermesDarkBlue">#031328</color>
+    <color name="primary_material_dark">#115096</color>
+    <color name="primary_dark_material_dark">#003980</color>
+    <color name="background_material_dark">#003980</color>
+    <color name="accent_material_dark">#06080c</color>
+    <color name="nav_bar_and_text_bg">#0e1e37</color>
+    <color name="colorBackground">#0e1e37</color>
 </resources>

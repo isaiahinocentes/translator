@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".TextTranslation">
+        <activity android:name=".TextTranslation"
+            android:theme="@style/Hermes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +24,8 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".SpeechTranslation"></activity>
+        <activity android:name=".SpeechTranslation"
+            android:theme="@style/Hermes"></activity>
     </application>
 
 </manifest>

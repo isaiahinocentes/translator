@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Hermes" parent="Theme.AppCompat.NoActionBar" >
+        <item name="android:colorBackground">@color/background_material_dark</item>
+        <item name="android:navigationBarColor">@color/nav_bar_and_text_bg</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+    </style>
+
 </resources>
