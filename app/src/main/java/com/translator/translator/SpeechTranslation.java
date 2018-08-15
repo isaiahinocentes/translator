@@ -22,10 +22,8 @@ public class SpeechTranslation extends AppCompatActivity {
         setContentView(R.layout.activity_speech_translation);
 
         txtInput = findViewById(R.id.txtInput);
-        spnrLangSrc = findViewById(R.id.spnrLangSource);
+        spnrLangSrc = findViewById(R.id.spnrLangSrc);
         spnrLangDir = findViewById(R.id.spnrLangDir);
-
-
     }
 
     public void updateTTSEngine(View v){
