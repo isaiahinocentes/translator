@@ -15,7 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Say..."
+        android:hint="Text to be translated"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -67,10 +67,17 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="92dp"
-        android:onClick="doSpeak"
+        android:onClick="translateAndSpeak"
         android:text="Speak"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 </android.support.constraint.ConstraintLayout>

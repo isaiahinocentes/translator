@@ -19,6 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.translator.translator.api.API;
 import com.translator.translator.api.Functions;
+import com.translator.translator.speech.Speech;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -126,6 +127,31 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         //displaying the error in toast if occurrs
         Toast.makeText(this , error.getMessage(), Toast.LENGTH_SHORT).show();
     }
+
+    /*========== Speech for Texboxes ======================================= */
+    public void doSpeak(View v){
+        //Get Text and Language Direction
+        String text = "";
+        String lang_dir = "";
+
+        if(v.equals(findViewById(R.id.micInput))){
+            text = String.valueOf(editText_input.getText());
+            lang_dir = String.valueOf(spinner_lang_src.getSelectedItem());
+        } else if(v.equals(findViewById(R.id.micOutput))){
+            text = String.valueOf(editText_output.getText());
+            lang_dir = String.valueOf(spinner_lang_dir.getSelectedItem());
+        }
+
+        try {
+            Speech speak = new Speech(text, lang_dir, this);
+            speak.speakOut(text);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error: "+e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
+
+
 
     /**==========================================================================================*/
     //Go to Speech Translation Feature

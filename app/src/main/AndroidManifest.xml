@@ -24,8 +24,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".SpeechTranslation"
-            android:theme="@style/Hermes"></activity>
+        <activity
+            android:name=".SpeechTranslation"
+            android:theme="@style/Hermes" />
     </application>
 
 </manifest>
