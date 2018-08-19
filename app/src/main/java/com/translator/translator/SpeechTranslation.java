@@ -1,6 +1,8 @@
 package com.translator.translator;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +25,8 @@ import com.translator.translator.speech.Speech;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class SpeechTranslation extends AppCompatActivity implements Response.ErrorListener, Response.Listener {
 
@@ -124,6 +128,40 @@ public class SpeechTranslation extends AppCompatActivity implements Response.Err
         Log.d("Hermes", error.toString());
         //displaying the error in toast if occurrs
         Toast.makeText(this , error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    protected static final int RESULT_SPEECH = 1;
+    public void recognizeSpeech(View v){
+        try {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            String value = spnrLangSrc.getSelectedItem().toString();
+            value = Functions.convertLocale(value);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, value);
+
+            startActivityForResult(intent, RESULT_SPEECH);
+            txtInput.setText("");
+
+        } catch (Exception a) {
+            Toast.makeText(getApplicationContext(),
+                "Opps! Your device doesn't support Speech to Text",
+                Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case RESULT_SPEECH: {
+                if (resultCode == RESULT_OK && null != data) {
+                    ArrayList<String> text = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    Log.d("TTS", text.toString());
+                    txtInput.setText(text.get(0));
+                }
+                break;
+            }
+
+        }
     }
 
 
