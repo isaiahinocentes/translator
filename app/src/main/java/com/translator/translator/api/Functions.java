@@ -6,8 +6,9 @@ import com.translator.translator.TextTranslation;
 
 public class Functions {
 
-    public static String Text;
-    public static String Lang;
+    public static String q;
+    public static String target; //target language
+    public static String source; //Source Language
     public static String FormattedText;
 
     /**
@@ -25,6 +26,15 @@ public class Functions {
         if(text.isEmpty()){
             throw new Exception("Text input is empty");
         }
+        //Error Checking
+        //if src and dir are the same, throw error
+        if(lang_src.equals(lang_dir)){
+            throw new Exception("The language source and direction are the same...");
+        }
+        //if either strings are null
+        if(lang_src.isEmpty() || lang_dir.isEmpty()){
+            throw new Exception("Language source or direction is empty");
+        }
 
         //Remove trailing and end spaces
         text = text.trim();
@@ -33,10 +43,10 @@ public class Functions {
         //Replace spaces between to %20
         text = text.replaceAll(" ", "%20");
 
-        //Save the Value to the Class
-        Text = "text="+text;
-        Lang = "lang="+formatLanguage(lang_src, lang_dir);
-        FormattedText = Text + "&" + Lang;
+        q = "q="+text+"&";
+        source = "source="+decodeLanguage(lang_src)+"&";
+        target = "target="+decodeLanguage(lang_dir);
+        FormattedText = q + "&" + source + "&" + target;
 
         //Return the formatted Text, ex.
         //text=text&lang=en-ta
@@ -83,6 +93,15 @@ public class Functions {
 
         //return en-ja
         return lang;
+    }
+
+    public static String decodeLanguage(String lang){
+        switch (lang){
+            case "English": return "en";
+            case "Japanese": return "ja";
+            case "Tagalog": return "tl";
+        }
+        return "";
     }
 
     /**

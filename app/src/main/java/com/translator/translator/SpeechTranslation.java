@@ -1,9 +1,7 @@
 package com.translator.translator;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
-import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -103,17 +101,17 @@ public class SpeechTranslation extends AppCompatActivity implements Response.Err
         }
     }
     //Translation Request Function
-    public void requestTranslation(String TEXT_LANG) {
+    public void requestTranslation(String q_source_target) {
         //Format the URL First
-        API.API_URL_KEY_TEXT_LANG = API.API_URL_KEY + TEXT_LANG;
+        String api_request = API.ggURL + API.ggKEY + q_source_target;
         //Show at Logcat
-        Log.d("Hermes", "API URL: "+API.API_URL_KEY_TEXT_LANG);
+        Log.d("Hermes", "API URL: " + api_request);
 
         //Show ProgressBar
         progressBar.setVisibility(View.VISIBLE);
 
         //creating a string request to send request to the url
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, API.API_URL_KEY_TEXT_LANG,this, this);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, api_request,this, this);
         //creating a request queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         //adding the string request to request queue
@@ -130,23 +128,19 @@ public class SpeechTranslation extends AppCompatActivity implements Response.Err
         try {
             //getting the whole json object from the response
             JSONObject obj = new JSONObject(response.toString());
-
             //Check response Code
-            int code = obj.getInt("code");
-            if(code == 200){
-                JSONArray arr_response = obj.getJSONArray("text");
-                //Get the Index[0] of text array reponse
-                translation = arr_response.getString(0);
+            JSONArray arr_response = obj.getJSONObject("data").getJSONArray("translations");
+            //Get the Index[0] of text array reponse
+            obj = new JSONObject(arr_response.getString(0));
+            translation = obj.getString("translatedText");
 
-                //Show translated Texts
-                translated_text = translation;
-                //Speak the translated text
-                doSpeak(translated_text);
+            //Show translated Texts
+            translated_text = translation;
+            //Speak the translated text
+            doSpeak(translated_text);
 
-                Toast.makeText(this, "Translation: "+translation, Toast.LENGTH_LONG).show();
-            } else { //If code is not success
-                throw new Exception(obj.toString());
-            }
+            Toast.makeText(this, "Translation: "+translation, Toast.LENGTH_LONG).show();
+
         } catch (Exception e) {
             Toast.makeText(this, "Error: "+e.getMessage(), Toast.LENGTH_LONG).show();
             e.printStackTrace();
