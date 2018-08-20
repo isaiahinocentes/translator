@@ -1,9 +1,8 @@
 package com.translator.translator;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -128,7 +127,7 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         Toast.makeText(this , error.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
-    /*========== Speech for Texboxes ======================================= */
+    /*========== Speech for Texboxes =======================================*/
     public void doSpeak(View v){
         //Get Text and Language Direction
         String text = "";
@@ -151,9 +150,7 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         }
     }
 
-
-
-    /**==========================================================================================*/
+    /*========== Switch Intent =======================================*/
     //Go to Speech Translation Feature
     public void gotoSpeechTranslation(View v){
         Intent intent = new Intent(TextTranslation.this, SpeechTranslation.class);

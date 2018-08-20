@@ -46,17 +46,49 @@ public class SpeechTranslation extends AppCompatActivity implements Response.Err
         progressBar = findViewById(R.id.progressBar);
     }
 
-    /*public void updateTTSEngine(View v){
-        Intent installIntent = new Intent();
-        installIntent.setAction(
-                TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-        startActivity(installIntent);
-    }*/
+    protected static final int RESULT_SPEECH = 1;
+
+    /**
+     * Intitiate the Google API Speech
+     * Recognition and set the Result to txtInput
+     * @param v
+     */
+    public void recognizeSpeech(View v){
+        try {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            String value = spnrLangSrc.getSelectedItem().toString();
+            value = Functions.convertLocale(value);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, value);
+
+            startActivityForResult(intent, RESULT_SPEECH);
+            txtInput.setText("");
+
+        } catch (Exception a) {
+            Toast.makeText(getApplicationContext(),
+                    "Opps! Your device doesn't support Speech to Text",
+                    Toast.LENGTH_SHORT).show();
+        }
+    } @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                    super.onActivityResult(requestCode, resultCode, data);
+                    switch (requestCode) {
+                        case RESULT_SPEECH: {
+                            if (resultCode == RESULT_OK && null != data) {
+                                ArrayList<String> text = data
+                                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                                Log.d("TTS", text.toString());
+                                txtInput.setText(text.get(0)); //Set the Recognized phrase to Text Input
+                                translateAndSpeak();
+                            }
+                            break;
+                        }
+
+                    }
+                }
 
     /**
      * Translate the Input and Speak translation in selected language
      */
-    public void translateAndSpeak(View v){
+    public void translateAndSpeak(){
         try{
             String text = txtInput.getText().toString();
             String lang_src = spnrLangSrc.getSelectedItem().toString();
@@ -130,42 +162,7 @@ public class SpeechTranslation extends AppCompatActivity implements Response.Err
         Toast.makeText(this , error.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
-    protected static final int RESULT_SPEECH = 1;
-    public void recognizeSpeech(View v){
-        try {
-            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-            String value = spnrLangSrc.getSelectedItem().toString();
-            value = Functions.convertLocale(value);
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, value);
-
-            startActivityForResult(intent, RESULT_SPEECH);
-            txtInput.setText("");
-
-        } catch (Exception a) {
-            Toast.makeText(getApplicationContext(),
-                "Opps! Your device doesn't support Speech to Text",
-                Toast.LENGTH_SHORT).show();
-        }
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case RESULT_SPEECH: {
-                if (resultCode == RESULT_OK && null != data) {
-                    ArrayList<String> text = data
-                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    Log.d("TTS", text.toString());
-                    txtInput.setText(text.get(0));
-                }
-                break;
-            }
-
-        }
-    }
-
-
-
+    //For Testing only ng Speech/Speak Function
     public void doSpeak(String text){
         //Get Text and Language Direction
         String lang_dir = String.valueOf(spnrLangDir.getSelectedItem());

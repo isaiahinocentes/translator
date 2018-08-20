@@ -13,10 +13,11 @@
         android:layout_height="63dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Text to be translated"
         android:inputType="textPersonName"
+        android:outlineAmbientShadowColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,12 +27,9 @@
         android:id="@+id/spnrLangSrc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:entries="@array/spinner_source_languages"
-        app:layout_constraintEnd_toStartOf="@+id/to"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInput" />
 
@@ -40,60 +38,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:entries="@array/spinner_direction_languages"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/to"
         app:layout_constraintTop_toBottomOf="@+id/txtInput" />
 
     <TextView
         android:id="@+id/to"
-        android:layout_width="60dp"
-        android:layout_height="24dp"
+        android:layout_width="78dp"
+        android:layout_height="23dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:text="Speak to"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/spnrLangDir"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toEndOf="@+id/spnrLangSrc"
         app:layout_constraintTop_toBottomOf="@+id/txtInput" />
 
-    <Button
-        android:id="@+id/btnSpeak"
+    <ImageView
+        android:id="@+id/btnMic"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="92dp"
-        android:onClick="translateAndSpeak"
-        android:text="Speak"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:onClick="recognizeSpeech"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to" />
+        app:layout_constraintTop_toBottomOf="@+id/to"
+        app:srcCompat="@drawable/hermes_mic" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="recognizeSpeech"
-        android:text="Recognize Speech"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSpeak" />
 </android.support.constraint.ConstraintLayout>
