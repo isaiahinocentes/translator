@@ -11,4 +11,9 @@
     <color name="accent_material_dark">#06080c</color>
     <color name="nav_bar_and_text_bg">#0e1e37</color>
     <color name="colorBackground">#0e1e37</color>
+    <color name="rgb1">#373737</color>
+    <color name="rgb2">#ef5555</color>
+    <color name="rgb3">#6e3159</color>
+    <color name="rgb4">#01bcd4</color>
+    <color name="rgb5">#595858</color>
 </resources>

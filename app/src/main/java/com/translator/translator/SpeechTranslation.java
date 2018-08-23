@@ -83,9 +83,8 @@ public class SpeechTranslation extends AppCompatActivity implements Response.Err
                     }
                 }
 
-    /**
-     * Translate the Input and Speak translation in selected language
-     */
+    //Translate the Input and Speak translation in selected language
+
     public void translateAndSpeak(){
         try{
             String text = txtInput.getText().toString();
@@ -100,6 +99,7 @@ public class SpeechTranslation extends AppCompatActivity implements Response.Err
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+
     //Translation Request Function
     public void requestTranslation(String q_source_target) {
         //Format the URL First

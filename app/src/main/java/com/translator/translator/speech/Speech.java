@@ -26,6 +26,7 @@ public class Speech implements TextToSpeech.OnInitListener{
         try {
             if (i == TextToSpeech.SUCCESS) {
                 int result = tts.setLanguage(this.locale);
+
                 //Check if the locale set is valid/supported
                 if (result == TextToSpeech.LANG_MISSING_DATA
                         || result == TextToSpeech.LANG_NOT_SUPPORTED) {

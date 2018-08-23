@@ -82,12 +82,19 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         progressBar.setVisibility(View.VISIBLE);
 
         //creating a string request to send request to the url
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, api_request,this, this);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET,
+                api_request,
+                this,
+                this
+        );
+
         //creating a request queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         //adding the string request to request queue
         requestQueue.add(stringRequest);
     }
+
     //Function to be called after Response
     @Override
     public void onResponse(Object response) {
@@ -99,7 +106,6 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         try {
             //getting the whole json object from the response
             JSONObject obj = new JSONObject(response.toString());
-
             //Check response Code
             JSONArray arr_response = obj.getJSONObject("data").getJSONArray("translations");
             //Get the Index[0] of text array reponse
@@ -131,6 +137,7 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         String text = "";
         String lang_dir = "";
 
+        //Find out which mic was pressed at input/output
         if(v.equals(findViewById(R.id.micInput))){
             text = String.valueOf(editText_input.getText());
             lang_dir = String.valueOf(spinner_lang_src.getSelectedItem());
@@ -138,6 +145,7 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
             text = String.valueOf(editText_output.getText());
             lang_dir = String.valueOf(spinner_lang_dir.getSelectedItem());
         }
+
 
         try {
             Speech speak = new Speech(text, lang_dir, this);

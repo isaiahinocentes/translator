@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.translator.translator">
 
+    <!--Permissions-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".TextTranslation"
+
+        <!--Splash Activity / Welcome page-->
+        <activity
+            android:name=".splash.MainActivity"
             android:theme="@style/Hermes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +24,19 @@
             </intent-filter>
         </activity>
 
+        <!-- Text Translation-->
+        <activity android:name=".TextTranslation"
+            android:theme="@style/Hermes"/>
+
+        <!--Speech Translation-->
+        <activity
+            android:name=".SpeechTranslation"
+            android:theme="@style/Hermes" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".SpeechTranslation"
-            android:theme="@style/Hermes" />
     </application>
 
 </manifest>
