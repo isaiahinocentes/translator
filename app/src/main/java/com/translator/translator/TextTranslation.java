@@ -19,13 +19,15 @@ import com.android.volley.toolbox.Volley;
 import com.translator.translator.api.API;
 import com.translator.translator.api.Functions;
 import com.translator.translator.speech.Speech;
+import com.translator.translator.to_romanji.WanaKanaJava;
+import com.translator.translator.to_romanji.WanaKanaJavaText;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class TextTranslation extends AppCompatActivity implements Response.Listener, Response.ErrorListener{
 
-    EditText editText_input, editText_output;
+    public static EditText editText_input, editText_output;
     Spinner spinner_lang_src, spinner_lang_dir;
     ProgressBar progressBar;
 
@@ -56,6 +58,7 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
             String text = String.valueOf(editText_input.getText()); //Text to be translated
             String lang_src = String.valueOf(spinner_lang_src.getSelectedItem()); //English, Japanese, or Tagalog
             String lang_dir = String.valueOf(spinner_lang_dir.getSelectedItem());
+            editText_output.setText("");
 
             //Format the input text to be sent to API Requests
             String formattedText = Functions.formatInput(text, lang_src, lang_dir);
@@ -113,6 +116,8 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
             translation = obj.getString("translatedText");
 
             //Show translated Texts
+            translation += " (" + convert2Romaji(translation) + ")";
+
             editText_output.setText(translation); //Show at Textbox
             Toast.makeText(this, "Translation: "+translation, Toast.LENGTH_LONG).show();
 
@@ -129,6 +134,19 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         Log.d("Hermes", error.toString());
         //displaying the error in toast if occurrs
         Toast.makeText(this , error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    //Convert Nihonggo to Romaji
+    public String convert2Romaji(String text) throws Exception {
+
+        WanaKanaJava wanaKana = new WanaKanaJava(false);
+
+        if(wanaKana.isKana(text) || wanaKana.isHiragana(text) || wanaKana.isKatakana(text)){
+            text = wanaKana.toRomaji(text);
+            return text;
+        }
+
+        throw new Exception("Text Input is Neither Hiragana or Katakana");
     }
 
     /*========== Speech for Texboxes =======================================*/
