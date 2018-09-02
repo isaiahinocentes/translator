@@ -116,7 +116,7 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
             translation = obj.getString("translatedText");
 
             //Show translated Texts
-            translation += " (" + convert2Romaji(translation) + ")";
+            translation += convert2Romaji(translation);
 
             editText_output.setText(translation); //Show at Textbox
             Toast.makeText(this, "Translation: "+translation, Toast.LENGTH_LONG).show();
@@ -142,9 +142,10 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
         WanaKanaJava wanaKana = new WanaKanaJava(false);
 
         if(wanaKana.isKana(text) || wanaKana.isHiragana(text) || wanaKana.isKatakana(text)){
-            text = wanaKana.toRomaji(text);
+            text = " ("+wanaKana.toRomaji(text)+ ")";
             return text;
         }
+		return null;
     }
 
     /*========== Speech for Texboxes =======================================*/
