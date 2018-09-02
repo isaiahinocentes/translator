@@ -145,8 +145,6 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
             text = wanaKana.toRomaji(text);
             return text;
         }
-
-        throw new Exception("Text Input is Neither Hiragana or Katakana");
     }
 
     /*========== Speech for Texboxes =======================================*/
