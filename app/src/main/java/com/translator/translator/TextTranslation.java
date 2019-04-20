@@ -145,7 +145,7 @@ public class TextTranslation extends AppCompatActivity implements Response.Liste
             text = " ("+wanaKana.toRomaji(text)+ ")";
             return text;
         }
-		return null;
+		return "";
     }
 
     /*========== Speech for Texboxes =======================================*/

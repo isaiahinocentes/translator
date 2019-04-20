@@ -36,6 +36,7 @@ public class Functions {
             throw new Exception("Language source or direction is empty");
         }
 
+
         //Remove trailing and end spaces
         text = text.trim();
         //convert to lowercase
@@ -54,11 +55,17 @@ public class Functions {
     }
 
     //Only three supported languages
-    /**
+    /**.....
      * Translation Languages:
      * ja - Japanese,
      * en - English,
-     * tl - Tagalog
+     * tl - Tagalog,
+     * ko - Korean,
+     * hi - Hindi,
+     * it - Italian,
+     * fi - Finnish,
+     * nl - Dutch,
+     * es - Spanish
      * */
     public static String formatLanguage(String lang_src, String lang_dir)
             throws Exception{
@@ -79,6 +86,12 @@ public class Functions {
             case "English": lang = "en"; break;
             case "Japanese": lang = "ja"; break;
             case "Tagalog": lang = "tl"; break;
+            case "Korean": lang = "ko"; break;
+            case "Hindi": lang = "hi"; break;
+            case "Italian": lang = "it"; break;
+            case "Finnish": lang = "fi"; break;
+            case "Dutch": lang = "nl"; break;
+            case "Spanish": lang = "es"; break;
         }
 
         //add hypen inbetween of keywords
@@ -89,6 +102,12 @@ public class Functions {
             case "English": lang += "en"; break;
             case "Japanese": lang += "ja"; break;
             case "Tagalog": lang += "tl"; break;
+            case "Korean": lang += "ko"; break;
+            case "Hindi": lang += "hi"; break;
+            case "Italian": lang += "it"; break;
+            case "Finnish": lang += "fi"; break;
+            case "Dutch": lang += "nl"; break;
+            case "Spanish": lang += "es"; break;
         }
 
         //return en-ja
@@ -100,6 +119,12 @@ public class Functions {
             case "English": return "en";
             case "Japanese": return "ja";
             case "Tagalog": return "tl";
+            case "Korean": return "ko";
+            case "Hindi": return "hi";
+            case "Italian": return "it";
+            case "Finnish": return "fi";
+            case "Dutch": return "nl";
+            case "Spanish": return "es";
         }
         return "";
     }
@@ -113,6 +138,12 @@ public class Functions {
             case "English": return "en_PH";
             case "Japanese": return "ja_JP";
             case "Tagalog": return "fil_PH";
+            case "Korean": return "ko_KR";
+            case "Hindi": return "hi_IN";
+            case "Italian": return "it_IT";
+            case "Finnish": return "sv_FI";
+            case "Dutch": return "nl_";
+            case "Spanish": return "es_ES";
             default:
                 throw new Exception("Invalid target language.");
         }

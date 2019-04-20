@@ -20,38 +20,24 @@ public class SlideAdapter extends PagerAdapter {
 
     //Images
     public int[] imageuno = {
-            R.drawable.image_1,
-            R.drawable.image_2,
-            R.drawable.image_3,
-            R.drawable.image_4,
-            R.drawable.image_5
+
+            R.drawable.image_3
     };
 
     //Titles
     public String[] titleuno = {
-            "COMMUNICATE",
-            "SHARE IDEAS",
-            "USER FRIENDLY",
-            "TRAVEL WITH US",
-            "HERMES TRANSLATOR"
+    "LANGUAGE TRANSLATOR"
     };
 
     //Descriptions
     public String[] descriptionuno = {
             "Communication is simply the act of transferring information from one place to another\n",
-            "There are many benefits from sharing ideas at work. I thought it would be good to write this because I occasionally hear people talk about sharing creates stolen ideas and in return fighting over those stolen ideas.",
-            "User-friendly describes a hardware device that is easy to use. It is \"friendly\" to the user, meaning it is not difficult to learn or understand.",
-            "Travel with Apostolic Travel and Tours." + "APOSTOLIC  TRAVEL & TOURS  started out as a small ticketing outlet in Buendia offering domestic and international ticketing. It was registered on December 08, 2007 and accredited by The Department Of Foreign Affairs (DFA). ",
-            "Welcome to Hermes Translator"
+
     };
 
     //Background
     public int[] backgroundcoloruno = {
-            R.drawable.bg,
-            R.drawable.bg,
-            R.drawable.bg,
-            R.drawable.bg,
-            Color.rgb(255, 167, 170)
+            R.drawable.bg
     };
 
 
